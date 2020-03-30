@@ -1,0 +1,6 @@
+.paddingZero{
+    padding: 0;
+}
+.btnSubmit:disabled{
+    background: #a0a0a0;
+}

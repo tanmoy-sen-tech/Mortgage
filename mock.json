@@ -1,0 +1,59 @@
+
+{
+  "products": [
+    { "productName":"abc",
+      "productId": 123,
+      "price":1400,
+      "quantity":2,
+      "reviews":4
+    },
+    { "productName":"pqr",
+      "productId": 321,
+      "price":2800,
+      "quantity":6,
+      "reviews":2
+    },
+    { "productName":"xyz",
+      "productId": 456,
+      "price":3400,
+      "quantity":4,
+      "reviews":5
+    }
+   
+  ],
+  "purchasedproducts": [
+    { "productName":"abc",
+      "productId": 123,
+      "price":1400,
+      "quantity":1,
+      "review": "good product",
+      "reviewFlag":true,
+      "rating":4
+    },
+    { "productName":"pqr",
+      "productId": 321,
+      "price":2800,
+      "quantity":1,
+      "reviewFlag":false
+      
+    }
+   
+  ],
+  "mockRegister": 
+{"statusCode":200,
+"message":"succes"
+    },
+   
+    "mockLogin": 
+      {
+        "statusCode":200,
+      "message":"succes",
+      "user":{ "name":"tanmoy",
+        "typeId":1
+
+      }
+          }
+
+          
+          
+    }

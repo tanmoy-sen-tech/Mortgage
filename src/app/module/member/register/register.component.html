@@ -1,0 +1,150 @@
+<div class="container login-container ">
+
+    <div class="row">
+        <div class="col-md-12 col-xs-12 login-form">
+            <h3>User Registration</h3>
+<p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="false"></p-steps>
+            <form [formGroup]="registerForm" (ngSubmit)="onClickSubmit()">
+                <div *ngIf ="activeIndex === 0">
+                    <div class="form-group">
+                        <label for="customer Name">Customer Name: <strong class="asterisk">*</strong></label>
+                        <input type="text" class="form-control" placeholder="Customer Name" id="customerName" name="customerName"
+                            formControlName="customerName" required>
+                        <div class="error" *ngIf="submitted  && login.customerName.errors  && login.customerName.errors.required">
+                            Customer Name is <strong>required</strong>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email: <strong class="asterisk">*</strong></label>
+                        <input type="text" class="form-control" placeholder="email Id" id="emailId" name="emailId"
+                            formControlName="emailId" required >
+                        <div class="error" *ngIf="submitted  && login.emailId.errors  && login.emailId.errors.required">
+                            User Email is <strong>required</strong>
+                        </div>
+                        <div class="error" *ngIf="submitted  && login.emailId.errors && login.emailId.errors.email">Email must be a valid email address</div>
+                    </div>
+                    <div class="form-group">
+                            <label for="PAN Number">PAN Number: <strong class="asterisk">*</strong></label>
+                        <input type="text" class="form-control" name="panNum" id="panNum" placeholder="Your Pan Number *"
+                            formControlName="panNum" required minlength="10" />
+                        <div class="error" *ngIf="submitted  && login.panNum.errors  && login.panNum.errors.required">
+                            PAN Number is <strong>required</strong>
+                        </div>
+                        <div class="error" *ngIf="submitted  && login.panNum.errors  && login.panNum.errors.minlength">
+                            panNum is <strong>minimum 10 charecters</strong>
+                        </div>
+                    </div>
+                    <div class="ui-g ui-fluid ">
+                        <div class="ui-g-12 ui-md-12 paddingZero">
+                            <label for="dob">DOB: <strong class="asterisk">*</strong></label>
+                            <input type="date" class="form-control" name="dob" id="dob" placeholder="dob *"
+                            formControlName="dob" required />
+                            <div class="error" *ngIf="submitted  && login.dob.errors  && login.dob.errors.required">
+                                DOB is <strong>required</strong>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="form-group">
+                        <label for="userType">Type</label>
+                        <select class="form-control" id="type" formControlName="userType">
+                          <option *ngFor="let type of availableUserType" [value]="type.code">{{type.name}}</option>
+                        </select>
+                      </div> -->
+                </div>
+                <div *ngIf ="activeIndex === 1">
+                    <div class="form-group">
+                        <label for="occupation">Occupation: <strong class="asterisk">*</strong></label>
+                        <input type="text" class="form-control" placeholder="occupation" id="occupation" name="occupation"
+                            formControlName="occupation" required>
+                        <div class="error" *ngIf="submitted  && login.occupation.errors  && login.occupation.errors.required">
+                            occupation is <strong>required</strong>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="salary">Salary: <strong class="asterisk">*</strong></label>
+                        <input type="text" class="form-control" placeholder="salary" id="salary" name="salary"
+                            formControlName="salary" numbersOnly required>
+                        <div class="error" *ngIf="submitted  && login.salary.errors  && login.salary.errors.required">
+                            Salary is <strong>required</strong>
+                        </div>
+                        
+                    </div>
+                     <div class="form-group">
+                        <label for="employmentStatus">Employment Status: <strong class="asterisk">*</strong></label>
+                        <select class="form-control" id="type" formControlName="employmentStatus">
+                          <option *ngFor="let emptype of employment" [value]="emptype.name">{{emptype.name}}</option>
+                        </select>
+                        <div class="error" *ngIf="submitted  && login.employmentStatus.errors  && login.employmentStatus.errors.required">
+                            Employment Status is <strong>required</strong>
+                        </div>
+                      </div>
+                </div>
+                <div  *ngIf ="activeIndex === 2">
+                    <div *ngIf="calculateEmi !== undefined"> <p><strong> your emi amount will be {{calculateEmi}}</strong></p>
+                        <button class="ui-button-success mr-3" pButton type="button" label="Accept" (click)="accept($event)"></button>
+                        <button class="ui-button-danger mr-3" pButton type="button" label="Cancel" (click)="cancel($event)"></button></div>
+                   
+                    <div class="form-group">
+                        <label for="property Cost">Property Cost: <strong class="asterisk">*</strong></label>
+                        <input type="text" class="form-control" placeholder="Property Cost" id="propertyCost" name="propertyCost"
+                            formControlName="propertyCost"  numbersOnly required>
+                        <div class="error" *ngIf="submitted  && login.propertyCost.errors  && login.propertyCost.errors.required">
+                            Property Cost is <strong>required</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="initial Deposit">Initial Deposit: <strong class="asterisk">*</strong></label>
+                        <input type="text" class="form-control" placeholder="Initial Deposit" id="initialDeposit" name="initialDeposit"
+                            formControlName="initialDeposit"  numbersOnly required>
+                        <div class="error" *ngIf="submitted  && login.initialDeposit.errors  && login.initialDeposit.errors.required">
+                            Initial Deposit Cost is <strong>required</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Tenure">Tenure:<strong class="asterisk">*</strong></label>
+                        <select class="form-control" id="type" formControlName="tenure">
+                          <option *ngFor="let t of time" [value]="t.value">{{t.value}}</option>
+                        </select>
+                        <div class="error" *ngIf="submitted  && login.tenure.errors  && login.tenure.errors.required">
+                            Tenure is <strong>required</strong>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="rateOfInterest">Rate Of Interest: <strong class="asterisk">*</strong></label>
+                        <select class="form-control" id="type" formControlName="rateOfInterest">
+                          <option *ngFor="let i of interest" [value]="i.value">{{i.value}}</option>
+                        </select>
+                        <div class="error" *ngIf="submitted  && login.rateOfInterest.errors  && login.rateOfInterest.errors.required">
+                            Rate Of Interest is <strong>required</strong>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="Operation Type">Operation Type : <strong class="asterisk">*</strong></label>
+                        <select class="form-control" id="type" formControlName="operationType">
+                          <option *ngFor="let ptype of payemntTime" [value]="ptype.value">{{ptype.value}}</option>
+                        </select>
+                        <div class="error" *ngIf="submitted  && login.operationType.errors  && login.operationType.errors.required">
+                            Operation Type is <strong>required</strong>
+                        </div>
+                      </div>
+                    <div class="form-group">
+                        
+                        <button class="btnSubmit" [disabled]=disableFlag aria-label="SignIn">Sign Up</button>
+                    </div>
+                    
+                        <button pButton type="button" label="Check EMI" (click)="checkEmi($event)"></button>
+                </div>
+                  <span> <a routerLink="/member/login" class="nav-link" routerLinkActive="active">Already Have an account? Login</a> </span>
+                 
+                </form>
+        </div>
+    </div>
+  </div>
+  <p-toast [style]="{marginTop: '80px'}"></p-toast>
+  <app-spinner [spinner]="spinner"></app-spinner>
+  <app-alert [alertObj]="api.alertConfig" *ngIf="api.alertConfig?.modalShow" (buttonAction)="modalAction($event)">
+  </app-alert>
+  

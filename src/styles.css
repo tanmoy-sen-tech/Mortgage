@@ -1,0 +1,236 @@
+/* You can add global styles to this file, and also import other style files */
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+.error{
+    font-size: 80%;
+    font-style: italic;
+    color: #f44336;
+    padding: 2px;
+}
+.ui-listbox {
+    height: 495px;
+    width: 220px !important;
+}
+.heading {
+    color: #0081c2;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 10px;
+}
+
+.ing-theme-color {
+    background-color: #0081c2;
+    color: #fff;
+}
+.ui-card {
+    color: #0081c2;
+}
+.border-none {
+    border: none;
+}
+/* registration & login */
+.login-form, .inner-container {
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    margin: 0 auto;
+    background: transparent;
+}
+.login-form h3, .inner-container h3 {
+    color: #0081c2;
+    text-align: left;
+    padding: 0 10%;
+}
+.login-container form {
+    padding: 5% 10%;
+}
+.register-container form {
+    padding: 2% 10%;
+}
+.btnSubmit {
+    border-radius: 10px;
+    padding: 2% 3.5%;
+    border: none;
+    cursor: pointer;
+}
+
+.login-form .btnSubmit, .inner-container .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #0081c2;
+    float: right;
+}
+.login-form .ForgetPwd {
+    color: #0081c2;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 80%;
+}
+.heading {
+    color: #0081c2;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 10px;
+  }
+  .text-align-right{
+    text-align: right;
+ }
+ .ui-table .ui-paginator-bottom{
+    text-align: right;
+ }
+ .asterisk{
+    color:#ea1125;
+}
+/* You can add global styles to this file, and also import other style files */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+/* html {
+    font-size: 62.5%;
+  } */
+
+.u_padding_0 {
+  padding: 0;
+}
+
+.u_margin_0 {
+  margin: 0;
+}
+
+.u_cursor_pointer {
+  cursor: pointer;
+}
+
+.u_banner-image {
+  max-width: 100%;
+  height: max-content;
+  object-fit: none;
+}
+
+.u_align_items_center {
+  align-items: center;
+}
+
+.u_text_align_center {
+  text-align: center;
+}
+
+.u_default_page_spacing {
+  margin-top: 40px;
+}
+
+.u_display_flex {
+  display: flex;
+  align-items: center;
+}
+
+.u_margin_left_32 {
+  margin-left: 32px
+}
+
+.u_margin_left_16 {
+  margin-left: 16px;
+
+}
+.u_margin_top_16 {
+  margin-top: 16px;
+}
+
+.u_warning_text {
+  color: red;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.u_custom_input {
+  height: 20px;
+  border: 0;
+  border-bottom: 1px solid #000;
+  border-radius: 0;
+  width: 100%;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 0.13px;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 0;
+}
+
+.u_custom_input:focus {
+  outline: 0;
+  box-shadow: initial;
+  background-color: inherit;
+}
+
+.u_custom_label {
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: 0.4px;
+  color: grey;
+  margin-bottom: 4px;
+}
+
+.u_custom_checkbox {
+  width: 24px;
+  height: 24px;
+}
+
+.u_vertical_center {
+  display: flex;
+  align-items: center;
+}
+:host ::ng-deep .custom-toast .ui-toast-message {
+  color: #ffffff;
+  background: #FC466B;
+  background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);
+  background: linear-gradient(to right, #3F5EFB, #FC466B);
+}
+
+:host ::ng-deep .custom-toast .ui-toast-close-icon {
+  color: #ffffff;
+}
+/*steps */
+.ui-steps .ui-steps-item {
+  width: 33.33%;
+}
+
+.ui-steps.steps-custom {
+  margin-bottom: 30px;
+}
+
+.ui-steps.steps-custom .ui-steps-item .ui-menuitem-link {
+  padding: 0 1em;
+  overflow: visible;
+}
+
+.ui-steps.steps-custom .ui-steps-item .ui-steps-number {
+  background-color: #0081c2;
+  color: #FFFFFF;
+  display: inline-block;
+  width: 36px;
+  border-radius: 50%;
+  margin-top: -14px;
+  margin-bottom: 10px;
+}
+
+.ui-steps.steps-custom .ui-steps-item .ui-steps-title {
+  color: #555555;
+}

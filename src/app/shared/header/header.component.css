@@ -1,0 +1,98 @@
+.logout{
+    background: #fff;
+    border: none;
+    color: #0081c2;
+    margin-left: 20px;
+}
+.header-bg{
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    color:#fff;
+}
+.user-details{
+    position: absolute;
+    right: 76px;
+}
+.count {
+    border-radius: 20px;
+    padding: 6px 14px;
+    background: #fff;
+    color: #0081c2;
+    border:none;
+    margin-left: 12px;
+    font-weight: 600;
+}
+.toggle-class {
+    width: 100%;
+    right: 0;
+    padding: 6px 16px;
+    height: 165px;
+}
+.toggle-height{
+    height: 165px;
+}
+.toggle-height{
+    min-height: 60px;
+    background: #0081c2;
+}
+.icon .pi{
+    font-size: 28px;
+    position: relative;
+    top: 8px;
+    left: 5px;
+}
+.center-aligned{
+  justify-content: center;
+}
+.dblock{
+display: block;
+padding: .5rem;
+background-color: #fff;
+}
+.navbarbrand{
+color: #000;
+text-decoration: none;
+font-weight: bold;
+letter-spacing: 5px;
+text-align: center;
+}
+.brandbar{
+  display: flex;
+  justify-content: center;
+  padding: .5rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+.cart-link{
+  color: #000;
+}
+
+.togglebutton{
+  position: absolute;
+  left: 0;
+}
+.navbar-nav .nav-link.active{
+  border-bottom: 2px solid black;
+}
+.cart,.cart-count{
+position: absolute;
+
+right: 25px;
+}
+
+.cart{
+  right: 30px;
+
+  font-size: 2rem;
+}
+.cart-count{
+  background: #000;
+  border-radius: 50%;
+  color: #fff;
+  padding: 0px 4px;
+  top: 0;
+  font-size: 1rem;
+}
+.logout{
+  position: absolute;
+  right: 0px;
+}
