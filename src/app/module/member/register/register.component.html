@@ -83,7 +83,7 @@
                       </div>
                 </div>
                 <div  *ngIf ="activeIndex === 2">
-                    <div *ngIf="calculateEmi !== undefined"> <p><strong> your emi amount will be {{calculateEmi}}</strong></p>
+                    <div *ngIf="calculateEmi !== undefined"> <p><strong> your emi amount will be {{calculateEmi | currency:'INR'}}</strong></p>
                         <button class="ui-button-success mr-3" pButton type="button" label="Accept" (click)="accept($event)"></button>
                         <button class="ui-button-danger mr-3" pButton type="button" label="Cancel" (click)="cancel($event)"></button></div>
                    

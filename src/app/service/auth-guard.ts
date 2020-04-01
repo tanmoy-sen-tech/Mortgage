@@ -17,11 +17,11 @@ export class AuthGuard implements CanActivate {
     const user = JSON.parse(sessionStorage.getItem('currentUser'));
     if (user) {
       /* send message to subscribers via observable subject */
-      this.notification.sendMessage(user);
+      // this.notification.sendMessage(user);
       return true;
     } else {
       // not logged in so redirect to login page with the return url
-      this.router.navigate(['/login']);
+      // this.router.navigate(['/login']);
       return false;
     }
   }

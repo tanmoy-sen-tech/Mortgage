@@ -48,7 +48,7 @@ export class Service {
       /* Get server-side error */
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    this.alertConfig = this.modalConfig('Error', error.message, true, [{ name: 'Ok' }]);
+    this.alertConfig = this.modalConfig('Error', error.error.message, true, [{ name: 'Ok' }]);
     return throwError(errorMessage);
   }
 
@@ -84,5 +84,4 @@ export class Service {
       button: btn
     };
   }
- 
 }

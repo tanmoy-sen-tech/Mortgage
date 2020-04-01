@@ -12,6 +12,7 @@ import {RatingModule} from 'primeng/rating';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {StepsModule} from 'primeng/steps';
 import {SliderModule} from 'primeng/slider';
+import {TabViewModule} from 'primeng/tabview';
 @NgModule({
   declarations: [],
   imports: [
@@ -27,12 +28,13 @@ import {SliderModule} from 'primeng/slider';
     RatingModule,
     InputTextareaModule,
     StepsModule,
-    SliderModule
+    SliderModule,
+    TabViewModule
 
   ],
   providers: [],
   exports: [ CardModule, CalendarModule, DropdownModule, TableModule,
     CarouselModule, RadioButtonModule, ButtonModule, DialogModule, ToastModule, RatingModule,
-    InputTextareaModule, StepsModule, SliderModule ]
+    InputTextareaModule, StepsModule, SliderModule, TabViewModule ]
 })
 export class PrimeModule { }

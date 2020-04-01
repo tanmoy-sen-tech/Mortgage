@@ -1,0 +1,31 @@
+<h3>Welcome {{ userDetail?.userName }}</h3>
+<p-tabView>
+        <p-tabPanel   header="Account Details">
+           <div  *ngFor="let userAccountDetails of accountDetails"> <h5>Details</h5>
+            <p>
+                <strong>Type:</strong>  {{userAccountDetails?.accountType }}
+                            </p>
+                <p>
+                        <strong> Number: </strong> {{userAccountDetails?.accountNumber}}
+                                    </p>
+                                    <p>
+                                    <strong>Balence:</strong> {{userAccountDetails?.balance | currency:'INR'}}
+                                    </p>
+           </div> 
+           
+            </p-tabPanel>
+            <p-tabPanel  header="Account History">
+                <div class="transaction-container">
+                    <h3>Transaction History</h3>
+                    <div class="grid-container">
+                        <app-grid [gridData]="statements" [gridColumnDefinition]="gridColumns"
+                            [sorting]="sorting" [pageLinks]="pageLinks" [pagination]="pagination"
+                            *ngIf="statements">
+                        </app-grid>
+                    </div>
+                </div>
+                 </p-tabPanel>
+            </p-tabView>
+            <app-spinner [spinner]="spinner"></app-spinner>
+            <app-spinner [spinner]="spinner"></app-spinner>
+<app-alert [alertObj]="api.alertConfig" *ngIf="api.alertConfig?.modalShow" (buttonAction)="modalAction($event)">

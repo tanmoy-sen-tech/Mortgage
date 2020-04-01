@@ -1,4 +1,4 @@
-<p-table [value]="gridData" rows="2" [pageLinks]="pageLinks" [paginator]="pagination" [totalRecords]="totalRecords">
+<p-table [value]="gridData" rows="10" [pageLinks]="pageLinks" [paginator]="pagination" [totalRecords]="totalRecords">
     <ng-template pTemplate="header">
         <tr>
             <th *ngFor="let col of gridColumnDefinition" [pSortableColumn]="sorting ? col.rowName: ''">

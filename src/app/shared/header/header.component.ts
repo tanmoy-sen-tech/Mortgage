@@ -3,9 +3,6 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NotificationService } from 'src/app/service/notification-service';
 
-import { Service } from 'src/app/service/service';
-import { UrlConfig } from 'src/app/service/url-config';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -57,9 +54,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       } else {
         this.routerpath = null;
       }
-      console.log(this.routerpath);
   });
-
-
 }
 }

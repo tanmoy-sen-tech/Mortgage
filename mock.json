@@ -21,24 +21,6 @@
     }
    
   ],
-  "purchasedproducts": [
-    { "productName":"abc",
-      "productId": 123,
-      "price":1400,
-      "quantity":1,
-      "review": "good product",
-      "reviewFlag":true,
-      "rating":4
-    },
-    { "productName":"pqr",
-      "productId": 321,
-      "price":2800,
-      "quantity":1,
-      "reviewFlag":false
-      
-    }
-   
-  ],
   "mockRegister": 
 {"statusCode":200,
 "message":"succes"
@@ -46,13 +28,38 @@
    
     "mockLogin": 
       {
-        "statusCode":200,
-      "message":"succes",
-      "user":{ "name":"tanmoy",
-        "typeId":1
+        "customerName":"Tanmoy",
+        "customerId":369,
+        "statusCode":607,
+      "message":"SUCCESS",
+      "account":[{ "accountType":"MORTGAGE",
+        "accountNum":145413138,
+        "balence":-1500.89
+
+      },
+      { "accountType":"SAVINGS",
+        "accountNum":145413139,
+        "balence":1500.89
 
       }
-          }
+    ]
+          },
+          "mocktransaction":[
+            {
+              "transactionId":1234,
+              "accountNum":145413138,
+              "transactionDate":"1995-12-12",
+              "transactionType":"debit",
+              "emiAmount":1500.89
+            },
+            {
+              "transactionId":1278,
+              "accountNum":145417898,
+              "transactionDate":"2019-12-12",
+              "transactionType":"debit",
+              "emiAmount":17800.89
+            }
+          ]
 
           
           

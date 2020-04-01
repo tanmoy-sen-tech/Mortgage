@@ -5,18 +5,8 @@ import { UrlConfig } from 'src/app/service/url-config';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/service/notification-service';
 import {MenuItem, MessageService} from 'primeng/api';
-interface UserType {
-  name: string;
-}
-interface InterestValue {
-  value: number;
-}
-interface TenureTime {
-  value: number;
-}
-interface Operation {
-  value: string;
-}
+import { UserType, InterestValue, TenureTime, Operation } from 'src/app/model/model';
+
 
 @Component({
   selector: 'app-register',
@@ -103,6 +93,7 @@ private createForm() {
 get login() { return this.registerForm.controls; }
 
 /* emi check */
+
 checkEmi() {
   if (this.registerForm.value.propertyCost !== '' && this.registerForm.value.tenure !== '' && this.registerForm.value.rateOfInterest !== ''
   && this.registerForm.value.initialDeposit !== '') {
@@ -112,22 +103,18 @@ const emiObject = {
   rateOfInterest: Number(this.registerForm.value.rateOfInterest),
   initialDeposit: Number(this.registerForm.value.initialDeposit),
 };
-console.log(emiObject);
-this.registerForm.controls.propertyCost.disable();
-this.registerForm.controls.initialDeposit.disable();
-this.registerForm.controls.rateOfInterest.disable();
-this.registerForm.controls.tenure.disable();
+
 this.api.postCall(this.url.urlConfig().checkEmi, emiObject, 'post').subscribe(data => {
-  if (data) {
+  if (data.statusCode === 607) {
     this.calculateEmi = data.emiAmount;
     this.spinner = false;
   } else {
-    this.spinner = false;
+     this.api.alertConfig = this.api.modalConfig('Error', '${data.message}', true, [{ name: 'Ok' }]);
+     this.spinner = false;
   }
 
 },
-  error => {
-
+  (error) => {
     this.spinner = false;
   });
   } else {
@@ -135,20 +122,24 @@ this.api.postCall(this.url.urlConfig().checkEmi, emiObject, 'post').subscribe(da
   }
 }
 /*accept emi amount */
+
 accept() {
   this.disableFlag = false;
   this.emi = this.calculateEmi;
 }
 /*reject emi amount */
+
 cancel() {
   this.disableFlag = true;
   this.registerForm.controls.propertyCost.enable();
   this.registerForm.controls.initialDeposit.enable();
   this.registerForm.controls.rateOfInterest.enable();
   this.registerForm.controls.tenure.enable();
+  this.emi = undefined;
+  this.calculateEmi = undefined;
 }
-/* on click of submit button
-*/
+/* on click of submit button*/
+
 public onClickSubmit() {
 
   this.submitted = true;
@@ -160,7 +151,7 @@ public onClickSubmit() {
     panNumber: this.registerForm.value.panNum,
     occupation: this.registerForm.value.occupation,
     salary: Number(this.registerForm.value.salary),
-    employmentStatus: this.registerForm.value.employmentStatus,
+    employementStatus: this.registerForm.value.employmentStatus,
     propertyCost: Number(this.registerForm.value.propertyCost),
     initialDeposit: Number(this.registerForm.value.initialDeposit),
     tenure: Number(this.registerForm.value.tenure),
@@ -168,36 +159,25 @@ public onClickSubmit() {
     operationType: this.registerForm.value.operationType,
     emiAmount: Number(this.emi)
     };
-    console.log(postObject);
         /* Api call*/
+    this.spinner = true;
     this.api.postCall(this.url.urlConfig().userRegister, postObject, 'post').subscribe(data => {
           if (data.statusCode === 607) {
             this.spinner = false;
-            this.api.alertConfig = this.api.modalConfig('Error', `${data.customer.loginId}` + ` password:${data.customer.password}`,
+            this.api.alertConfig = this.api.modalConfig('Error', `${data.customerDto.loginId}` + ` password:${data.customerDto.password}`,
              true, [{ name: 'Ok' }]);
           } else {
-            this.api.alertConfig = this.api.modalConfig('Error', '${data.message}', true, [{ name: 'Ok' }]);
+            this.api.alertConfig = this.api.modalConfig('Error', `${data.message}`, true, [{ name: 'Ok' }]);
             this.spinner = false;
           }
         },
-          error => {
+          (error) => {
             this.spinner = false;
           });
   } else {
     this.messageService.add({severity: 'warn', summary: 'Please fill  all the fields and Check the EMI'});
   }
-  /*mock*/
-//   this.api.getList(this.url.urlConfig().mockRegister).subscribe(data => {
-// console.log(data);
-// if (data.statusCode === 200) {
-//          this.router.navigate(['/member/login']);
-//         } else {
-//            console.log('failed');
-//          }
-//      });
 }
-
-
 
 /* Oninit call */
 ngOnInit() {

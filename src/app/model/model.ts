@@ -1,24 +1,12 @@
-export interface Product {
-  productName: string;
-  productId: number;
-  price: string;
-  quantity: number;
-  reviews: number;
-
+export interface UserType {
+  name: string;
 }
-
-// export interface ProductDetail {
-//   product: [
-//     {  id: number;
-//       imageurl: string;
-//       categoryName: string;
-//       itemname: string;
-//       price: string;
-//       detail: [
-//         {
-//           size: string;
-//           quantity: number;
-//         }
-//       ]; }
-//   ];
-// }
+export interface InterestValue {
+  value: number;
+}
+export interface TenureTime {
+  value: number;
+}
+export interface Operation {
+  value: string;
+}

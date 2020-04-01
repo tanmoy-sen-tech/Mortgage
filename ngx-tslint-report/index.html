@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ngx-tslint-report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <style>
+        .no-padding {
+            padding: 0 !important;
+        }
+
+        .no-bg{
+            background: none !important;
+        }
+
+        .bold-text{
+            font-weight: 900;
+        }
+        .date-text{
+            font-size: 16px;
+        }
+        .tool-info{
+            font-size: small;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body class="container">
+    <header class="jumbotron">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">TSLint report</h1>
+                <h3 class="text-center">Project name:&nbsp;
+                    <span class="bold-text">Mortgage</span>
+                </h3>
+                <h4 class="text-center">Total lint errors:&nbsp;
+                    <span class="badge badge-danger">0</span>
+                </h4>
+                <h5 class="text-center">Generated on:&nbsp;
+                    <span class="date-text">Mar 31st 2020, 11:46:32 pm</span>
+                </h5>
+                <div class="tool-info text-center">Powered by&nbsp;<a href="https://www.npmjs.com/package/ngx-tslint-report">ngx-tslint-report</a></div>
+            </div>
+        </div>
+
+    </header>
+    <section>
+        <table class="table table-hover table-bordered table-sm table-striped" style="margin-bottom:0">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>File Path</th>
+                    <th>Error count</th>
+                    <th>Review</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </section>
+</body>
+<script>
+    function expandTable(id) {
+        let detailElement = document.getElementById('detail' + id);
+        detailElement.style.display = (detailElement.style.display === 'none') ? 'table' : 'none';
+        let clickedButton = document.getElementById('icon' + id);
+        let isDetailClosed = clickedButton.classList.contains('fa-eye');
+        if (isDetailClosed) {
+            clickedButton.classList.remove('fa-eye');
+            clickedButton.classList.add('fa-eye-slash');
+        } else {
+            clickedButton.classList.remove('fa-eye-slash');
+            clickedButton.classList.add('fa-eye');
+        }
+    }
+
+    function scrollToTop() {
+        window.scrollTo(0, 0);
+    }
+
+</script>
+
+</html>

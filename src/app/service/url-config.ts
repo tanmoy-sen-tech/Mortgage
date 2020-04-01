@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 @Injectable()
 export class UrlConfig {
-    serverConfig = false;
-    private apiHost = 'http://10.117.189.111:9090/';
+    serverConfig = true;
+    private apiHost = 'http://localhost:7028/mortgage/';
     private apiMock = 'http://localhost:3000/';
     url = {};
 
@@ -11,7 +11,10 @@ export class UrlConfig {
         return this.url = {
              userLogin: this.apiMock + 'users/login',
              userRegister: this.apiMock + 'users',
-             checkEmi : this.apiMock + 'users/emi'
+             checkEmi : this.apiMock + 'account',
+             transactionDetails : this.apiMock + 'account',
+             mockLogin : this.apiMock + 'mockLogin',
+             mocktransaction : this.apiMock + 'mocktransaction',
         };
     }
     /* url config with url Server list */
@@ -19,7 +22,10 @@ export class UrlConfig {
         return this.url = {
             userLogin: this.apiHost + 'users/login',
             userRegister: this.apiHost + 'users',
-            checkEmi : this.apiHost + 'users/emi'
+            checkEmi : this.apiHost + 'account',
+            transactionDetails : this.apiHost + 'account',
+            mockLogin : this.apiHost + 'mockLogin',
+            mocktransaction : this.apiHost + 'mocktransaction',
         };
     }
 

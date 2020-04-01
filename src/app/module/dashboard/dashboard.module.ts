@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { SummaryComponent } from './summary/summary.component';
 import { SharedModuleModule } from 'src/app/shared/shared-module.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MemberRoutingModule } from './member-routing.module';
+
 
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [SummaryComponent],
   imports: [
     CommonModule,
-    MemberRoutingModule,
+    DashboardRoutingModule,
     SharedModuleModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
-export class MemberModule { }
+export class DashboardModule { }

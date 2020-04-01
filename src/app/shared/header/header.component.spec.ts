@@ -13,9 +13,7 @@ describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
   let notification: NotificationService;
-  let api: Service;
-  let url: UrlConfig;
-  let mockRouter = {
+  const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
   const MockUserService = {

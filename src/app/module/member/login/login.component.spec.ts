@@ -24,8 +24,8 @@ describe('LoginComponent', () => {
         return of({
           statusCode: 200,
           message: 'ok',
-          user:{ name: 'Tanmoy',
-                typeId:1
+          user: { name: 'Tanmoy',
+                typeId: 1
           }
       }
       );
@@ -45,7 +45,7 @@ describe('LoginComponent', () => {
     };
     // create new instance of FormBuilder
     const formBuilder: FormBuilder = new FormBuilder();
-  
+
     beforeEach(async(() => {
       TestBed.configureTestingModule({
         declarations: [LoginComponent],

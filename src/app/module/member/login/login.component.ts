@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   routerPath: string;
   account: any;
   userName: string;
-  userId: number
+  userId: number;
   constructor(
     private fb: FormBuilder,
     private api: Service,
@@ -55,10 +55,8 @@ private createForm() {
 get login() { return this.loginForm.controls; }
 
 
-/* Go to the page basedon type
- @param mobile is user input
- @param password is user input
-*/
+ /* Login form submit action */
+
 public onClickSubmit() {
   this.submitted = true;
   if (this.loginForm.valid) {
@@ -66,48 +64,38 @@ public onClickSubmit() {
       loginId: this.loginForm.value.loginId,
       password: this.loginForm.value.password
     };
-    console.log(postObject);
-        /* Api call*/
+    this.spinner = true;
+
+    /* Api call*/
+
     this.api.postCall(this.url.urlConfig().userLogin, postObject, 'post').subscribe(data => {
       if (data.statusCode === 607 ) {
-        if (data.account) {
-          this.account = data.account;
+        this.spinner = false;
+        if (data.accountDto) {
+          this.account = data.accountDto;
           this.userId = data.customerId;
           this.userName = data.customerName;
-         }
-          // sessionStorage.setItem('currentUser', JSON.stringify(userDetails));
-        // this.router.navigate(['/list/products'], { state: { data: data.user.type
-        // }});
-      } else {
-         this.api.alertConfig = this.api.modalConfig('Error', `${data.message}`, true, [{ name: 'Ok' }]);
-
-      }
+          const userDetails = {
+      userId: this.userId,
+      userName: this.userName
+    };
+          sessionStorage.setItem('currentUser', JSON.stringify(userDetails));
+          this.router.navigate(['/dashboard/summary'], { state: { data: this.account
+      }});
+     }
+        } else {
+          this.spinner = false;
+          this.api.alertConfig = this.api.modalConfig('Error', `${data.message}`, true, [{ name: 'Ok' }]);
+     }
         },
-        error => {
+        (error) => {
           this.spinner = false;
         });
-  /*mock*/
-    // this.api.getList(this.url.urlConfig().mockLogin).subscribe(data => {
-    // console.log(data);
-    // if (data.statusCode === 200) {
-    //   if (data.user) {
-    //               const userDetails = {
-    //                 userName: data.user.name,
-    //               };
-    //             }
-    //   this.router.navigate(['/list/products'], { state: { data: data.user.typeId
-    //          }});
-    //         } else {
-    //            console.log('failed');
-    //          }
-    //      });
    }
 }
 
-
-
 /* Oninit call */
-ngOnInit() {
+      ngOnInit() {
   this.createForm();
   this.notificationService.sendRoute(this.routerPath);
 }

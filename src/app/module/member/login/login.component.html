@@ -4,7 +4,7 @@
             <h3>Sign In</h3>
             <form [formGroup]="loginForm" (ngSubmit)="onClickSubmit()">
                 <div class="form-group">
-                    <label for="id">Login ID: <strong class="asterisk">*</strong></label>
+                    <label for="loginId">Login ID: <strong class="asterisk">*</strong></label>
                     <input type="text" class="form-control" placeholder="Login ID" id="loginId" name="loginId"
                         formControlName="loginId" required>
                     <div class="error" *ngIf="submitted  && login.loginId.errors  && login.loginId.errors.required">
