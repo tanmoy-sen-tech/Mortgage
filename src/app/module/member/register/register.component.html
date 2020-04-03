@@ -73,11 +73,11 @@
                         
                     </div>
                      <div class="form-group">
-                        <label for="employmentStatus">Employment Status: <strong class="asterisk">*</strong></label>
-                        <select class="form-control" id="type" formControlName="employmentStatus">
-                          <option *ngFor="let emptype of employment" [value]="emptype.name">{{emptype.name}}</option>
+                        <label for="employement Status">Employment Status: <strong class="asterisk">*</strong></label>
+                        <select class="form-control" id="type" formControlName="employementStatus">
+                          <option *ngFor="let e of employment" [value]="e.name">{{e.name}}</option>
                         </select>
-                        <div class="error" *ngIf="submitted  && login.employmentStatus.errors  && login.employmentStatus.errors.required">
+                        <div class="error" *ngIf="submitted  && login.employementStatus.errors  && login.employementStatus.errors.required">
                             Employment Status is <strong>required</strong>
                         </div>
                       </div>

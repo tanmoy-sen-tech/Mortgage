@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
     private notificationService: NotificationService,
     private messageService: MessageService
   ) {
-    this.routerPath = router.url;
     this.employment = [
       {name: 'Self-employed'},
       {name: 'Salaried'}
@@ -80,7 +79,7 @@ private createForm() {
     panNum: ['', [Validators.required]],
     occupation: ['', Validators.required],
     salary: ['', Validators.required],
-    employmentStatus: ['', Validators.required],
+    employementStatus: ['', Validators.required],
     propertyCost: ['', Validators.required],
     initialDeposit: ['', Validators.required],
     tenure: ['', Validators.required],
@@ -103,7 +102,7 @@ const emiObject = {
   rateOfInterest: Number(this.registerForm.value.rateOfInterest),
   initialDeposit: Number(this.registerForm.value.initialDeposit),
 };
-
+this.spinner = true;
 this.api.postCall(this.url.urlConfig().checkEmi, emiObject, 'post').subscribe(data => {
   if (data.statusCode === 607) {
     this.calculateEmi = data.emiAmount;
@@ -131,10 +130,6 @@ accept() {
 
 cancel() {
   this.disableFlag = true;
-  this.registerForm.controls.propertyCost.enable();
-  this.registerForm.controls.initialDeposit.enable();
-  this.registerForm.controls.rateOfInterest.enable();
-  this.registerForm.controls.tenure.enable();
   this.emi = undefined;
   this.calculateEmi = undefined;
 }
@@ -143,7 +138,8 @@ cancel() {
 public onClickSubmit() {
 
   this.submitted = true;
-  if (this.registerForm.valid && this.emi !== undefined) {
+  if (this.registerForm.valid) {
+    if (this.emi !== undefined) {
     const postObject = {
        customerName: this.registerForm.value.customerName,
     emailId: this.registerForm.value.emailId,
@@ -151,7 +147,7 @@ public onClickSubmit() {
     panNumber: this.registerForm.value.panNum,
     occupation: this.registerForm.value.occupation,
     salary: Number(this.registerForm.value.salary),
-    employementStatus: this.registerForm.value.employmentStatus,
+    employementStatus: this.registerForm.value.employementStatus,
     propertyCost: Number(this.registerForm.value.propertyCost),
     initialDeposit: Number(this.registerForm.value.initialDeposit),
     tenure: Number(this.registerForm.value.tenure),
@@ -174,14 +170,16 @@ public onClickSubmit() {
           (error) => {
             this.spinner = false;
           });
+        } else {
+          this.messageService.add({severity: 'warn', summary: 'Please check the EMI'});
+        }
   } else {
-    this.messageService.add({severity: 'warn', summary: 'Please fill  all the fields and Check the EMI'});
+    this.messageService.add({severity: 'warn', summary: 'Please fill  all the fields'});
   }
 }
 
 /* Oninit call */
 ngOnInit() {
-  this.router.navigate(['/member/register']);
   this.notificationService.sendRoute( this.routerPath );
   // if (!this.common.validUser()) {
   //   this.router.navigate(['/']);
