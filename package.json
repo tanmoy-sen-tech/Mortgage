@@ -23,7 +23,7 @@
     "@angular/router": "~8.2.13",
     "@ng-bootstrap/ng-bootstrap": "^5.2.1",
     "bootstrap": "^4.4.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "json-server": "^0.15.1",
     "primeicons": "^2.0.0",
     "primeng": "^9.0.0-rc.1",
